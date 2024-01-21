@@ -5,6 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { AuthEntity } from './entities/auth.entity';
 import { LoginDto } from './dto/login.dto';
+import { UserEntity } from './entities/user.entity';
 
 @Controller('user')
 @ApiTags("user")
@@ -16,5 +17,14 @@ export class UserController {
   login(@Body() {nama,email} :LoginDto ) {
     return this.userService.login(nama,email);
   }
-
+  @Post('generateTamu')
+  @ApiOkResponse({type:UserEntity})
+  generateTamu(@Body() {nama,email} :LoginDto ) {
+    return this.userService.login(nama,email);
+  }
+  @Get()
+  @ApiOkResponse({type:UserEntity,isArray:true})
+  findAll() {
+    return this.userService.findAll();
+  }
 }

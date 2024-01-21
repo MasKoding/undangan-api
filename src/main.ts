@@ -4,9 +4,9 @@ import { SwaggerModule,DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  app.setGlobalPrefix('v1');
   const config = new DocumentBuilder()
-  .setTitle('Undangan API')
+  .setTitle('Invitation Restful API')
   .setDescription('Restful API Menggunakan Prisma & Postgresql Dibuat Oleh MasKoding')
   .setVersion('0.1')
   .addBearerAuth()
